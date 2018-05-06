@@ -2,7 +2,7 @@
 from django.shortcuts import render
 from django.views.generic import TemplateView
 from django.http import JsonResponse
-from crawler.CoinPannCrawler import CoinPannCrawler
+from crawler import CoinPannCrawler
 from bs4 import BeautifulSoup
 import re
 
@@ -17,7 +17,7 @@ def coin_pann_community(request):
     page = request.GET.get('page')
     if page is None:
       page = 1
-    raw_html = CoinPannCrawler(page)
+    raw_html = CoinPannCrawler.CoinPannCrawler(page)
 
     bsobj = BeautifulSoup(raw_html.get_html_text(), 'lxml')
     parsing_tr = bsobj.find_all("tr", {"class": re.compile("^bg")})
