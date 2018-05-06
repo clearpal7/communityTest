@@ -6,7 +6,7 @@ Welcome to the AWS CodeStar sample web application
 2. pip install requests    #requests 모듈 설치
 3. pip install beautifulsoup4 #beautifulsoup4모듈 설치(크롤링 라이브러리)
 4. pip install lxml #lxml 모듈 설치
-
+5. bonjour-py==0.3제거 (requirements.txt에서)
 
 
 
