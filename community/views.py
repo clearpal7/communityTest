@@ -1,11 +1,16 @@
-# -*- coding: utf-8 -*-
-from __future__ import unicode_literals
-
+ # community/views.py
+from django.shortcuts import render
+from django.views.generic import TemplateView
 from django.http import JsonResponse
 from crawler.CoinPannCrawler import CoinPannCrawler
 from bs4 import BeautifulSoup
 import re
+
+
 # Create your views here.
+class HomePageView(TemplateView):
+    def get(self, request, **kwargs):
+        return render(request, 'index.html', context=None)
 
 
 def coin_pann_community(request):

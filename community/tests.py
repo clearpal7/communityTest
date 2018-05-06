@@ -1,6 +1,14 @@
-# -*- coding: utf-8 -*-
-from __future__ import unicode_literals
+from django.test import TestCase, RequestFactory
+from community.views import HomePageView
 
-from django.test import TestCase
+class HelloWorldTestCase(TestCase):
 
-# Create your tests here.
+    def setUp(self):
+        self.factory = RequestFactory()
+
+    def test_home_page(self):
+        request = self.factory.get('/')
+        response = HomePageView.as_view()(request)
+        self.assertEqual(response.get('content-type'), 'text/html; charset=utf-8')
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, 'Congratulations')
